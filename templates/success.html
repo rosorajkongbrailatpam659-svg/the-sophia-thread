@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Order Submitted | The Sophia Thread{% endblock %}
+
+{% block content %}
+
+<section class="success-section">
+  <div class="success-card">
+
+    <div class="success-icon">✓</div>
+
+    <p class="eyebrow">ORDER RECEIVED</p>
+
+    <h1>Thank you!</h1>
+
+    <p>
+      Your order request has been submitted successfully.
+    </p>
+
+    <p>
+      The Sophia Thread will review your request and contact you soon.
+    </p>
+
+    <div class="success-actions">
+
+      <a class="btn btn-primary"
+         href="https://wa.me/919863401051?text=Hello%20The%20Sophia%20Thread,%20I%20have%20just%20submitted%20an%20order%20request."
+         target="_blank"
+         rel="noopener noreferrer">
+        Chat on WhatsApp
+      </a>
+
+      <a class="btn btn-light"
+         href="{{ url_for('home') }}">
+        Back to Website
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

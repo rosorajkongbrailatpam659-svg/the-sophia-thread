@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ product['name'] }} | The Sophia Thread{% endblock %}
+{% block content %}
+<section class="section product-detail">
+  <div class="detail-image">
+    {% if product['image'] %}
+      <img src="{{ url_for('uploaded_file', filename=product['image']) }}" alt="{{ product['name'] }}">
+    {% else %}
+      <div class="no-image">Embroidery</div>
+    {% endif %}
+  </div>
+  <div class="detail-content">
+    <p class="eyebrow">THE SOPHIA THREAD</p>
+    <h1>{{ product['name'] }}</h1>
+    <p class="product-category">
+    {{ product['category'] }}
+</p>
+    <p class="detail-price">₹{{ "%.0f"|format(product['price']) }}</p>
+    <p>{{ product['description'] }}</p>
+    <p class="stock">{{ product['quantity'] }} available</p>
+    {% if product['quantity'] > 0 %}
+      <a class="btn btn-primary" href="{{ url_for('order', product_id=product['id']) }}">Order Now</a>
+      <a class="btn btn-whatsapp"
+   href="https://wa.me/919863401051?text=Hello%20The%20Sophia%20Thread,%20I%20am%20interested%20in%20{{ product['name'] }}"
+   target="_blank">
+   Order on WhatsApp
+</a>
+    {% else %}
+      <span class="sold-out">Currently unavailable</span>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

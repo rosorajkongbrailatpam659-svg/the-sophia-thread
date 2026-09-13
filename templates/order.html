@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Order {{ product['name'] }} | The Sophia Thread{% endblock %}
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <p class="eyebrow">ORDER REQUEST</p>
+    <h1>{{ product['name'] }}</h1>
+    <p class="detail-price">₹{{ "%.0f"|format(product['price']) }}</p>
+
+    <form method="post">
+      <label>Your name *</label>
+      <input name="customer_name" required>
+
+      <label>Phone number *</label>
+      <input name="phone" type="tel" required>
+
+      <label>Address *</label>
+      <textarea name="address" rows="4" required></textarea>
+
+      <label>Quantity *</label>
+      <input name="quantity" type="number" min="1" max="{{ product['quantity'] }}" value="1" required>
+
+      <label>Additional requirements</label>
+      <textarea name="message" rows="4" placeholder="Size, color, customization, delivery notes..."></textarea>
+
+      <button class="btn btn-primary full" type="submit">Submit Order Request</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,1 +1,172 @@
+{% extends "base.html" %}
+{% block title %}The Sophia Thread | Embroidery{% endblock %}
+{% block content %}
 
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">HANDCRAFTED EMBROIDERY</p>
+    <h1>Threads that<br><em>tell your story.</em></h1>
+    <p class="hero-copy">Beautiful embroidery made with patience, creativity and care.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#designs">Explore Designs</a>
+      <a class="btn btn-light" href="#about">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section intro">
+  <p class="eyebrow">THE SOPHIA THREAD</p>
+  <h2>Made to be remembered.</h2>
+  <p>From thoughtful details to custom pieces, every embroidery design is created to add something special to the fabric, gift or outfit it belongs to.</p>
+</section>
+
+<section id="designs" class="section">
+  <div class="category-filters">
+    <a href="{{ url_for('home') }}"
+       class="{% if selected_category == 'All' %}active{% endif %}">
+        All
+    </a>
+
+    <a href="{{ url_for('home', category='Curtains') }}"
+       class="{% if selected_category == 'Curtains' %}active{% endif %}">
+        Curtains
+    </a>
+
+    <a href="{{ url_for('home', category='Clothing') }}"
+       class="{% if selected_category == 'Clothing' %}active{% endif %}">
+        Clothing
+    </a>
+
+    <a href="{{ url_for('home', category='Gifts') }}"
+       class="{% if selected_category == 'Gifts' %}active{% endif %}">
+        Gifts
+    </a>
+
+    <a href="{{ url_for('home', category='Home Decor') }}"
+       class="{% if selected_category == 'Home Decor' %}active{% endif %}">
+        Home Decor
+    </a>
+
+    <a href="{{ url_for('home', category='Custom Embroidery') }}"
+       class="{% if selected_category == 'Custom Embroidery' %}active{% endif %}">
+        Custom Embroidery
+    </a>
+</div>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">SHOP</p>
+      <h2>Our Designs</h2>
+    </div>
+  </div>
+  {% if products %}
+  <div class="product-grid">
+    {% for product in products %}
+    <article class="product-card">
+      <a href="{{ url_for('product', product_id=product['id']) }}" class="product-image">
+        {% if product['image'] %}
+          <img src="{{ url_for('uploaded_file', filename=product['image']) }}" alt="{{ product['name'] }}">
+        {% else %}
+          <div class="no-image">Embroidery</div>
+        {% endif %}
+      </a>
+      <div class="product-info">
+        <h3>{{ product['name'] }}</h3>
+
+<p class="product-category">
+    {{ product['category'] }}
+</p>
+
+<p class="price">₹{{ "%.0f"|format(product['price']) }}</p>
+
+<p class="description">{{ product['description'] }}</p>
+
+<div class="product-bottom">
+          <span>{{ product['quantity'] }} available</span>
+          <a href="{{ url_for('product', product_id=product['id']) }}">View →</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+    <div class="empty-state">
+      <h3>New designs are coming soon.</h3>
+      <p>The shop will show embroidery pieces here once they are added from the admin panel.</p>
+    </div>
+  {% endif %}
+</section>
+
+<section class="custom-section">
+  <div>
+    <p class="eyebrow">CUSTOM WORK</p>
+    <h2>Have your own idea?</h2>
+    <p>Ask about a custom embroidery piece made around your design and requirements.</p>
+  </div>
+  <a class="btn btn-primary" href="mailto:hello@thesophiathread.com">Request a Quote</a>
+</section>
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">About Us</p>
+            <h2>The Sophia Thread</h2>
+            <p>
+                The Sophia Thread brings creativity, craftsmanship, and
+                beautiful embroidery together. We create elegant designs
+                with attention to detail and care.
+            </p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Made with Care</h3>
+            <p>
+                From beautiful embroidery pieces to custom designs,
+                we aim to create something special for every customer.
+            </p>
+
+            <p>
+                🧵 Custom Embroidery<br>
+                ✨ Handmade Designs<br>
+                💖 Made with Care
+            </p>
+        </div>
+    </div>
+</section>
+<section class="section contact-section" id="contact">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Get in Touch</p>
+            <h2>Let's Create Something Beautiful</h2>
+            <p>
+                Have a custom embroidery requirement?
+                Contact The Sophia Thread and let's discuss your design.
+            </p>
+        </div>
+
+        <div class="contact-card">
+            <h3>The Sophia Thread</h3>
+
+            <p>🧵 Custom Embroidery & Handmade Designs</p>
+
+            <p>
+                📱 WhatsApp:
+                <a href="https://wa.me/919863401051" target="_blank">
+                    +91 9863401051
+                </a>
+            </p>
+
+            <a class="btn btn-whatsapp"
+               href="https://wa.me/919863401051?text=Hello%20The%20Sophia%20Thread,%20I%20would%20like%20to%20know%20about%20your%20embroidery%20services."
+               target="_blank">
+                Chat on WhatsApp
+            </a>
+            <a class="social-icon"
+   href="https://www.instagram.com/threads.by.sophia/"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

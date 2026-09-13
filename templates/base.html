@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}The Sophia Thread{% endblock %}</title>
+  <meta name="description" content="The Sophia Thread — embroidery crafted with care.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="{{ url_for('home') }}">
+    <img src="{{ url_for('static', filename='images/logo.jpeg') }}"
+         alt="The Sophia Thread Logo"
+         class="brand-logo">
+</a>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('home') }}#designs">Designs</a>
+      <a href="{{ url_for('home') }}#about">About</a>
+      <a href="{{ url_for('home') }}#contact">Contact</a>
+      <a class="nav-instagram"
+   href="https://www.instagram.com/threads.by.sophia/"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+</a>
+    </nav>
+  </div>
+</header>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-wrap">
+      {% for message in messages %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer id="contact" class="footer">
+  <div>
+    <h3>The Sophia Thread</h3>
+    <p>Threads that tell your story.</p>
+  </div>
+  <div>
+    <p>For custom embroidery orders, contact the business directly.</p>
+    <p class="muted">© 2026 The Sophia Thread</p>
+  </div>
+</footer>
+</body>
+</html>
+<footer class="site-footer">
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>The Sophia Thread</h3>
+            <p>Handcrafted embroidery made with care.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('home') }}#designs">Designs</a>
+            <a href="{{ url_for('home') }}#about">About</a>
+            <a href="{{ url_for('home') }}#contact">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Connect With Us</h4>
+
+            <a href="https://wa.me/919863401051"
+               target="_blank"
+               rel="noopener noreferrer">
+                WhatsApp
+            </a>
+
+            <a href="https://www.instagram.com/threads.by.sophia/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Instagram
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 The Sophia Thread. All rights reserved.
+    </div>
+</footer>
