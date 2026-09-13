@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Admin Login | The Sophia Thread{% endblock %}
+{% block content %}
+<section class="form-section">
+  <div class="form-card small">
+    <p class="eyebrow">PRIVATE AREA</p>
+    <h1>Admin Login</h1>
+    <form method="post">
+      <label>Username</label>
+      <input name="username" required autocomplete="username">
+      <label>Password</label>
+      <input name="password" type="password" required autocomplete="current-password">
+      <button class="btn btn-primary full" type="submit">Login</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

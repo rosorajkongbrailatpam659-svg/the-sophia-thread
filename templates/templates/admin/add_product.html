@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Add Product | The Sophia Thread{% endblock %}
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <p class="eyebrow">ADMIN</p>
+    <h1>Add Embroidery Design</h1>
+    <form method="post" enctype="multipart/form-data">
+      <label>Product/design name *</label>
+      <input name="name" placeholder="Floral Embroidery" required>
+
+      <label>Price (₹) *</label>
+      <input name="price" type="number" min="0" step="0.01" required>
+
+      <label>Description</label>
+      <textarea name="description" rows="5" placeholder="Describe the embroidery..."></textarea>
+<label>Category *</label>
+<select name="category" required>
+    <option value="Curtains">Curtains</option>
+    <option value="Clothing">Clothing</option>
+    <option value="Gifts">Gifts</option>
+    <option value="Home Decor">Home Decor</option>
+    <option value="Custom Embroidery">Custom Embroidery</option>
+    <option value="Other">Other</option>
+</select>
+      <label>Quantity *</label>
+      <input name="quantity" type="number" min="0" value="1" required>
+
+      <label>Product photo</label>
+      <input name="image" type="file" accept=".jpg,.jpeg,.png,.webp">
+
+      <button class="btn btn-primary full" type="submit">Add Product</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
